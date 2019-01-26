@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -6,12 +6,14 @@
   <title>Search User Repositories</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+  <h1>Search for github User Repositories!</h1>
   <form class="js-search-form">
-    <label for="username-input">Show all repos a github user owns!</label>
+    <label for="username-input">Username</label>
     <input type="text" class="username-search js-input" value="owencyr">
+    <input type="submit" class="submit-button js-input">
   </form>
   <section class="js-results"></section>
   <script src="index.js"></script>

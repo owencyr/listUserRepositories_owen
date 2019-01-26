@@ -8,7 +8,7 @@
 
 // https://api.github.com/users/:username/repos
 
-const baseURL = 'https://api.github.com/users/';
+const baseURL = 'https://api.github.com/users';
 
 
 
@@ -21,15 +21,14 @@ function handleSubmit() {
 }
 
 function getUsernameInput() {
-  $('.js-input').val();
+  let userInput = $('.js-input').val();
+  console.log(`searching for  ${userInput}`);
+  return userInput;
 }
 
 function callAPI(username) {
-  const params = [
-    username
-  ];
-
-  let searchUserURI = `${baseURL}${params.username}/repos`;
+  
+  let searchUserURI = `${baseURL}/${username}/repos`;
 
   fetch(searchUserURI)
     .then(function (response) {
@@ -48,14 +47,19 @@ function callAPI(username) {
 
 function displayResults(responseJSON) {
   console.log(responseJSON);
-  let resultsHTML = generateHTML(responseJSON);
+  let resultsHTML = formatResponse(responseJSON);
   $('.js-results').html(resultsHTML);
 }
 
-function generateHTML() {
+function formatResponse(responseJSON) {
+  return responseJSON.map(item => generateHTML(item))
+}
+
+function generateHTML(result) {
   return `
   <ul>
-    <li>
+    <li><h2>${result.name}</h2></li>
+    <li><a href="${result.html_url}">${result.html_url}</li>
   </ul><br>`;
 }
 
