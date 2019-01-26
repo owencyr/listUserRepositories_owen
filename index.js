@@ -10,7 +10,7 @@
 
 const baseURL = 'https://api.github.com/users';
 
-
+// a new line
 
 function handleSubmit() {
   $('.js-search-form').on('submit', function(e) {
